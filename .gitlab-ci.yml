@@ -2,6 +2,7 @@ pages:
   stage: deploy
   script:
     - mkdir -p public
+    - ls
     - cp index.html style.css script.js public/
     - if [ -f config.json ]; then cp config.json public/; fi
   artifacts:
