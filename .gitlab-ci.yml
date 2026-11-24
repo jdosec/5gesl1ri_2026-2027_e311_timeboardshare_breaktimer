@@ -1,3 +1,6 @@
+include:
+  - local: github.yml
+
 pages:
   stage: deploy
   script:
