@@ -1,0 +1,13 @@
+variables:
+  GIT_DEPTH: 0   # historique complet (obligatoire pour pousser vers GitHub)
+  GITHUB_REPO: "jdosec/5gesl1ri_2026-2027_e311_timeboardshare_breaktimer"
+
+sync-github:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache git
+  script:
+    - git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" "HEAD:refs/heads/${CI_COMMIT_BRANCH}"
+  rules:
+    - if: $CI_COMMIT_BRANCH && $GITHUB_TOKEN
